@@ -13,11 +13,13 @@ contextContainer = {};
 
 export const Context = {
 
-    getContext: function(contextName) {
-        return contextContainer[contextName];
+    getContext: function(contextName = null) {
+        if (contextName) return contextContainer[contextName];
+        else return contextContainer['Default'];
     },
 
     setContext: function(contextName, context) {
         contextContainer[contextName] = context;
     }
 }
+

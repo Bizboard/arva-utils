@@ -369,8 +369,12 @@ System.register("Context", [], function($__export) {
     execute: function() {
       contextContainer = {};
       Context = $__export("Context", {
-        getContext: function(contextName) {
-          return contextContainer[contextName];
+        getContext: function() {
+          var contextName = arguments[0] !== (void 0) ? arguments[0] : null;
+          if (contextName)
+            return contextContainer[contextName];
+          else
+            return contextContainer['Default'];
         },
         setContext: function(contextName, context) {
           contextContainer[contextName] = context;
