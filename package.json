@@ -1,0 +1,22 @@
+{
+  "name": "arva-context",
+  "version": "1.0.0-pre-1",
+  "description": "Using the latest ES6 standards creating a simple Context for dependency injection purpose.",
+  "main": false,
+  "homepage": "https://github.com/Bizboard/arva-context",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Bizboard/arva-context.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bizboard/arva-context/issues"
+  },
+  "jspm": {
+    "directories": {
+      "lib": "src",
+      "packages": "jspm_packages"
+    }
+  },
+  "author": "Tom Clement <tom.clement@bizboard.nl>, Hans van den Akker <hans@bizboard.nl>",
+  "license": "MIT"
+}
