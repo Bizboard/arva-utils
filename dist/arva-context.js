@@ -363,7 +363,8 @@
 System.register("Context", [], function($__export) {
   "use strict";
   var __moduleName = "Context";
-  var Context;
+  var contextContainer,
+      Context;
   return {
     setters: [],
     execute: function() {

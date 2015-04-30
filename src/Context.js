@@ -9,7 +9,7 @@
 
  */
 
-contextContainer = {};
+var contextContainer = {};
 
 export const Context = {
 
