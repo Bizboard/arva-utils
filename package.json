@@ -16,7 +16,9 @@
       "lib": "src"
     },
     "dependencies": {
-      "lodash": "npm:lodash@^3.9.3"
+      "fs": "github:jspm/nodelibs-fs@^0.1.2",
+      "lodash": "npm:lodash@^3.9.3",
+      "path": "github:jspm/nodelibs-path@^0.1.0"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
