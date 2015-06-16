@@ -69,7 +69,8 @@ export function PostRequest(options) {
             // so check the status
             if (req.status === 200) {
                 // Resolve the promise with the response text
-                resolve(req.response);
+                let responseDate = req.getResponseHeader('Date');
+                resolve({ response: req.response, timestamp: responseDate });
             } else {
                 // Otherwise reject with the status text
                 // which will hopefully be a meaningful error
