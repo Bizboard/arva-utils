@@ -50,9 +50,15 @@ export function GetRequest(url) {
 export function PostRequest(options) {
 
     // make the request dummy proof
-    if (!options) { options = {}; }
-    if (!options.headers) { options.headers = new Map(); }
-    if (!options.data) { options.data = ''; }
+    if (!options) {
+        options = {};
+    }
+    if (!options.headers) {
+        options.headers = new Map();
+    }
+    if (!options.data) {
+        options.data = '';
+    }
 
 
     return new Promise((resolve, reject)=> {
@@ -70,7 +76,7 @@ export function PostRequest(options) {
             if (req.status === 200) {
                 // Resolve the promise with the response text
                 let responseDate = req.getResponseHeader('Date');
-                resolve({ response: req.response, timestamp: responseDate });
+                resolve({response: req.response, timestamp: responseDate});
             } else {
                 // Otherwise reject with the status text
                 // which will hopefully be a meaningful error
@@ -87,4 +93,22 @@ export function PostRequest(options) {
         req.send(options.data);
     });
 
+}
+
+
+export function ExistsRequest(url) {
+
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('OPTIONS', url, false);
+    req.send();
+
+    if (req.status !== 404) {
+        // Resolve the promise with the response text
+        return true;
+    } else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        return false;
+    }
 }
