@@ -11,7 +11,7 @@ exports.build = true;
 
 exports.fetch = function (load) {
     return new Promise(function (resolve, reject) {
-        var absolutePath = load.address.substr('file:'.length);
+        var absolutePath = load.address.replace('.js', '').substr('file:'.length);
         fs.readFile(absolutePath, function (error, data) {
             if (error) { reject(error); }
 
