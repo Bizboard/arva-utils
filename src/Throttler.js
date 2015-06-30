@@ -49,6 +49,7 @@ export class Throttler {
         if(timeSinceLastExecuted >= this.delay) {
             /* It's been at least the given throttleDelay since the last execution, so we can go ahead and execute the top action. */
             this._executeTopAction();
+            this.lastExecuted = Date.now();
 
             /* If we have more actions in the queue, fire up the timer. */
             if(this.queue.length) {
