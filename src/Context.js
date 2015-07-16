@@ -9,17 +9,21 @@
 
  */
 
+import {Injector}                   from 'di';
+
 var contextContainer = {};
 
-export const Context = {
+export class Context {
 
-    getContext: function(contextName = null) {
-        if (contextName) return contextContainer[contextName];
-        else return contextContainer['Default'];
-    },
+    static getContext(contextName = 'Default') {
+        return contextContainer[contextName];
+    }
 
-    setContext: function(contextName, context) {
+    static setContext(context = {}, contextName = 'Default') {
         contextContainer[contextName] = context;
     }
-}
 
+    static buildContext(dependencies = [], contextName = 'Default') {
+        Context.setContext(new Injector(dependencies));
+    }
+}

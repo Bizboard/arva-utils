@@ -1,16 +1,16 @@
 System.config({
   "baseURL": "/",
-  "defaultJSExtensions": true,
   "transpiler": "traceur",
   "paths": {
-    "*": "src/*.js",
-    "github:*": "jspm_packages/github/*.js",
-    "npm:*": "jspm_packages/npm/*.js"
+    "*": "src/*",
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*"
   }
 });
 
 System.config({
   "map": {
+    "di": "github:Bizboard/di.js@master",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "lodash": "npm:lodash@3.9.3",
     "path": "github:jspm/nodelibs-path@0.1.0",

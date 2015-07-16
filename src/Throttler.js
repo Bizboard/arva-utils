@@ -3,7 +3,7 @@
  */
 
 import _                                from 'lodash';
-import {ObjectHelper}                   from './ObjectHelper';
+import {ObjectHelper}                   from './ObjectHelper.js';
 
 export class Throttler {
     /**

@@ -16,6 +16,7 @@
       "lib": "src"
     },
     "dependencies": {
+      "di": "github:Bizboard/di.js@master",
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "lodash": "npm:lodash@^3.9.3",
       "path": "github:jspm/nodelibs-path@^0.1.0"
