@@ -1,10 +1,10 @@
 /**
- This Source Code Form is subject to the terms of the Mozilla Public
- License, v. 2.0. If a copy of the MPL was not distributed with this
- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ This Source Code is licensed under the MIT license. If a copy of the
+ MIT-license was not distributed with this file, You can obtain one at:
+ http://opensource.org/licenses/mit-license.html.
 
  @author: Tom Clement (tjclement)
- @license MPL 2.0
+ @license MIT
  @copyright Bizboard, 2015
 
  */
@@ -190,7 +190,7 @@ export class ObjectHelper {
 
             /* Value must be a non-null primitive or object to be pushable to a dataSource */
             if (value !== null && value !== undefined && typeof value !== 'function') {
-                if (typeof value == 'object') {
+                if (typeof value === 'object') {
                     result[name] = ObjectHelper.getEnumerableProperties(value);
                 } else {
                     result[name] = value;
@@ -201,7 +201,7 @@ export class ObjectHelper {
         /* Collect all properties with accessors (getters/setters) that are enumerable, too */
         let descriptorNames = Object.getOwnPropertyNames(prototype);
         descriptorNames = descriptorNames.filter(function (name) {
-            return propNames.indexOf(name) < 0
+            return propNames.indexOf(name) < 0;
         });
         for (let name of descriptorNames.values()) {
             let descriptor = Object.getOwnPropertyDescriptor(prototype, name);
@@ -210,7 +210,7 @@ export class ObjectHelper {
 
                 /* Value must be a non-null primitive or object to be pushable to a dataSource */
                 if (value !== null && value !== undefined && typeof value !== 'function') {
-                    if (typeof value == 'object') {
+                    if (typeof value === 'object') {
                         result[name] = ObjectHelper.getEnumerableProperties(value);
                     } else {
                         result[name] = value;

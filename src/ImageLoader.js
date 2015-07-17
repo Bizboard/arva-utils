@@ -1,23 +1,28 @@
 /**
- * SystemJS Image Loader that embeds images as data URIs inside the application bundle.
- *
- * Created by tom on 03/06/15.
+ SystemJS Image Loader that embeds images as data URIs inside the application bundle.
+
+ This Source Code is licensed under the MIT license. If a copy of the
+ MIT-license was not distributed with this file, You can obtain one at:
+ http://opensource.org/licenses/mit-license.html.
+
+ @author: Tom Clement (tjclement)
+ @license MIT
+ @copyright Bizboard, 2015
+
  */
 
-
-/* Unbundled build, loaded dynamically through System.import() */
 if (typeof window !== 'undefined') {
+    /* Unbundled build, loaded dynamically through System.import() */
     exports.build = false;
 
     exports.fetch = function (load) {
         var absolutePath = load.address.replace('.js', '').substr('file:'.length);
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
             resolve('module.exports = "' + absolutePath + '"');
         });
-    }
-}
-/* Bundled build, loaded from bundle.js */
-else {
+    };
+} else {
+    /* Bundled build, loaded from bundle.js */
 
     var fs = require('fs');
     var path = require('path');

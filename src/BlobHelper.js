@@ -1,15 +1,22 @@
 /**
- * Created by mysim1 on 16/06/15.
+ This Source Code is licensed under the MIT license. If a copy of the
+ MIT-license was not distributed with this file, You can obtain one at:
+ http://opensource.org/licenses/mit-license.html.
+
+ @author: Hans van den Akker (mysim1)
+ @license MIT
+ @copyright Bizboard, 2015
+
  */
 
 export class BlobHelper {
 
     /**
      * Convert base64 string data to a HTML5 Blob object.
-     * @param b64Data
-     * @param contentType
-     * @param sliceSize
-     * @returns {*}
+     * @param {String} b64Data Base64 data to convert to Blob
+     * @param {String} contentType Content type
+     * @param {Number} sliceSize How large the chunks are in which we process the data.
+     * @returns {Blob} Blob of raw data.
      */
     static base64toBlob(b64Data, contentType, sliceSize) {
         contentType = contentType || '';

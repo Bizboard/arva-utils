@@ -9,7 +9,11 @@
 
  */
 
-
+/**
+ * Prepares a GET request and initiates the communication.
+ * @param {String} url
+ * @returns {Promise} Returns an asynchronous response object which can be managed to read the response in an chaining proces.
+ */
 export function GetRequest(url) {
 
     // Return a new promise.
@@ -42,10 +46,9 @@ export function GetRequest(url) {
 }
 
 /**
- *
- * @param options       Provide properties: { headers: <Map>, data: <string>, url: <string> }
- * @returns {Promise}   Returns an asynchronous response object which can be managed to read the response in an chaining proces.
- * @constructor         Prepares Request and initiates the communication.
+ * Prepares a POST request and initiates the communication.
+ * @param {Object} options Provide properties: { headers: <Map>, data: <string>, url: <string> }
+ * @returns {Promise} Returns an asynchronous response object which can be managed to read the response in an chaining proces.
  */
 export function PostRequest(options) {
 
@@ -103,12 +106,5 @@ export function ExistsRequest(url) {
     req.open('OPTIONS', url, false);
     req.send();
 
-    if (req.status !== 404) {
-        // Resolve the promise with the response text
-        return true;
-    } else {
-        // Otherwise reject with the status text
-        // which will hopefully be a meaningful error
-        return false;
-    }
+    return req.status !== 404;
 }
