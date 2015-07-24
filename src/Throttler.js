@@ -89,7 +89,7 @@ export class Throttler {
      * @private
      */
     _executeTopAction() {
-        let action = this.queue.pop();
+        let action = this.queue.shift();
         if(action && typeof action === 'function'){
             action.call(this.actionContext);
         }
