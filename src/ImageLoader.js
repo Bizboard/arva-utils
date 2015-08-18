@@ -39,13 +39,12 @@ if (typeof window !== 'undefined') {
 
                 var extension = path.extname(absolutePath).replace('.', '').toLowerCase();
 
-                /* SVG images don't need to be base64 encoded */
                 var isSvg = (extension === 'svg');
-                var imgdata = isSvg ? data.toString().replace(/(\r\n|\r|\n)/gm, '') : data.toString('base64');
+                var imgdata = data.toString('base64');
 
                 var dataType = 'image/' + (isSvg ? 'svg+xml' : extension);
                 var charset = ';charset=utf-8';
-                var encoding = isSvg ? '' : ';base64';
+                var encoding = ';base64';
 
                 var uri = 'data:' + dataType + charset + encoding + ',' + imgdata;
                 resolve('module.exports = \'' + uri + '\';');
