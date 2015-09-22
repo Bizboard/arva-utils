@@ -189,8 +189,9 @@ export class ObjectHelper {
             let value = rootObject[name];
 
             /* Value must be a non-null primitive or object to be pushable to a dataSource */
-            if (value !== null && value !== undefined && typeof value !== 'function') {
-                if (typeof value === 'object') {
+            if (value !== null && value !== undefined && typeof value !==
+                'function') {
+                if (typeof value === 'object' && !(value instanceof Array)) {
                     result[name] = ObjectHelper.getEnumerableProperties(value);
                 } else {
                     result[name] = value;
@@ -210,7 +211,7 @@ export class ObjectHelper {
 
                 /* Value must be a non-null primitive or object to be pushable to a dataSource */
                 if (value !== null && value !== undefined && typeof value !== 'function') {
-                    if (typeof value === 'object') {
+                    if (typeof value === 'object' && !(value instanceof Array)) {
                         result[name] = ObjectHelper.getEnumerableProperties(value);
                     } else {
                         result[name] = value;
