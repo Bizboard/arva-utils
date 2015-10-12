@@ -11,7 +11,7 @@ System.config({
 
 System.config({
   "map": {
-    "di": "github:Bizboard/di.js@master",
+    "di": "github:bizboard/di.js@master",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "lodash": "npm:lodash@3.10.1",
     "path": "github:jspm/nodelibs-path@0.1.0",
