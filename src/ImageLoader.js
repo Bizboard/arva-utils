@@ -32,23 +32,44 @@ if (typeof window !== 'undefined') {
     exports.fetch = function (load) {
         return new Promise(function (resolve, reject) {
             var absolutePath = load.address.replace('.js', '').substr('file:'.length);
-            fs.readFile(absolutePath, function (error, data) {
-                if (error) {
-                    reject(error);
-                }
-
-                var extension = path.extname(absolutePath).replace('.', '').toLowerCase();
-
-                var isSvg = (extension === 'svg');
-                var imgdata = data.toString('base64');
-
-                var dataType = 'image/' + (isSvg ? 'svg+xml' : extension);
-                var charset = ';charset=utf-8';
-                var encoding = ';base64';
-
-                var uri = 'data:' + dataType + charset + encoding + ',' + imgdata;
-                resolve('module.exports = \'' + uri + '\';');
-            });
+            copyFile(absolutePath, resolve, reject);
         });
     };
+
+    function copyFile(source, resolve, reject) {
+        var cbCalled = false;
+        var dir = 'img';
+        var target = `${dir}/${path.basename(source)}`;
+
+        fs.mkdir(dir, function(mkdirError){
+
+            if(mkdirError && mkdirError.code !== 'EEXIST'){
+                return reject(mkdirError);
+            }
+
+            var rd = fs.createReadStream(source);
+            rd.on('error', function(err) {
+                done(err);
+            });
+            var wr = fs.createWriteStream(target);
+            wr.on('error', function(err) {
+                done(err);
+            });
+            wr.on('close', function(ex) {
+                done();
+            });
+            rd.pipe(wr);
+
+            function done(error) {
+                if (!cbCalled) {
+                    if(!error && resolve){
+                        return resolve('module.exports = \'' + target + '\';');
+                    } else if(reject) {
+                        return reject(error);
+                    }
+                    cbCalled = true;
+                }
+            }
+        });
+    }
 }
