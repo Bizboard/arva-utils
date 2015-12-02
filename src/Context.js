@@ -20,10 +20,10 @@ export class Context {
     }
 
     static setContext(context = {}, contextName = 'Default') {
-        contextContainer[contextName] = context;
+        return contextContainer[contextName] = context;
     }
 
     static buildContext(dependencies = [], contextName = 'Default') {
-        Context.setContext(new Injector(dependencies));
+        return Context.setContext(new Injector(dependencies), contextName);
     }
 }

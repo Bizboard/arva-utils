@@ -185,7 +185,7 @@ export class ObjectHelper {
 
         /* Collect all propertise in the prototype's keys() enumerable */
         let propNames = Object.keys(prototype);
-        for (let name of propNames.values()) {
+        for (let name in propNames) {
             let value = rootObject[name];
 
             /* Value must be a non-null primitive or object to be pushable to a dataSource */
@@ -204,7 +204,7 @@ export class ObjectHelper {
         descriptorNames = descriptorNames.filter(function (name) {
             return propNames.indexOf(name) < 0;
         });
-        for (let name of descriptorNames.values()) {
+        for (let name in descriptorNames) {
             let descriptor = Object.getOwnPropertyDescriptor(prototype, name);
             if (descriptor && descriptor.enumerable) {
                 let value = rootObject[name];
