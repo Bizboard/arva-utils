@@ -24,8 +24,6 @@ System.config({
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "lodash": "npm:lodash@3.10.1",
     "path": "github:jspm/nodelibs-path@0.1.0",
-    "traceur": "github:jmcriffey/bower-traceur@0.0.88",
-    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
