@@ -19,6 +19,7 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
+    "bowser": "npm:bowser@1.0.0",
     "core-js": "npm:core-js@1.2.6",
     "di": "github:bizboard/di.js@master",
     "fs": "github:jspm/nodelibs-fs@0.1.2",

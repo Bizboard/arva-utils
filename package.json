@@ -19,6 +19,7 @@
       "lib": "src"
     },
     "dependencies": {
+      "bowser": "npm:bowser@^1.0.0",
       "di": "github:bizboard/di.js@master",
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "lodash": "npm:lodash@^3.9.3",
