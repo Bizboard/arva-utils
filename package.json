@@ -22,7 +22,7 @@
       "bowser": "npm:bowser@^1.0.0",
       "di": "github:bizboard/di.js@master",
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
-      "lodash": "npm:lodash@^3.9.3",
+      "lodash": "npm:lodash@^4.2.0",
       "path": "github:jspm/nodelibs-path@^0.1.0"
     },
     "devDependencies": {
