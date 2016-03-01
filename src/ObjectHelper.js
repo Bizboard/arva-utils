@@ -149,27 +149,42 @@ export class ObjectHelper {
 
     /* Calls object['functionName'].bind(bindTarget) on all of object's functions. */
     static bindAllMethods(object, bindTarget) {
+
         /* Bind all current object's methods to bindTarget. */
-        let methodNames = ObjectHelper.getMethodNames(object);
-        methodNames.forEach(function (name) {
-            object[name] = object[name].bind(bindTarget);
-        });
+        let methodDescriptors = ObjectHelper.getMethodDescriptors(object);
+        for (let methodName in methodDescriptors) {
+            let propertyDescriptor = methodDescriptors[methodName];
+            if (propertyDescriptor && propertyDescriptor.get) {
+                propertyDescriptor.get = propertyDescriptor.get.bind(bindTarget);
+            } else if (propertyDescriptor.set) {
+                propertyDescriptor.set = propertyDescriptor.set.bind(bindTarget);
+            } else if(propertyDescriptor.writable){
+                propertyDescriptor.value = propertyDescriptor.value.bind(bindTarget);
+            }
+            Object.defineProperty(object, methodName, propertyDescriptor);
+        }
     }
 
-    static getMethodNames(object, methodNames = []) {
 
-        let propNames = Object.getOwnPropertyNames(object).filter(function (c) {
-            return typeof object[c] === 'function';
-        });
-        methodNames = methodNames.concat(propNames);
+    static getMethodDescriptors(object) {
+
+        let methodDescriptors = {};
+
+        for (let propertyName of Object.getOwnPropertyNames(object)) {
+            let propertyDescriptor = Object.getOwnPropertyDescriptor(object, propertyName) || {};
+            /* Initializers can be ignored since they are bound anyways */
+            if (!propertyDescriptor.initializer && (propertyDescriptor.get || typeof object[propertyName] === 'function')) {
+                methodDescriptors[propertyName] = propertyDescriptor;
+            }
+        }
 
         /* Recursively find prototype's methods until we hit the Object prototype. */
         let prototype = Object.getPrototypeOf(object);
         if (prototype.constructor.name !== 'Object' && prototype.constructor.name !== 'Array') {
-            return ObjectHelper.getMethodNames(prototype, methodNames);
+            methodDescriptors = _.extend(ObjectHelper.getMethodDescriptors(prototype), methodDescriptors);
         }
 
-        return methodNames;
+        return methodDescriptors;
 
     }
 
