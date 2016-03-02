@@ -50,6 +50,11 @@ function famousMerge(defaultParam, specifiedParam) {
         if (!Array.isArray(param)) {
 
             if (typeof param === 'object') {
+
+                if(_.isEmpty(param)){
+                    return param === specifiedParam ? defaultParam : specifiedParam;
+                }
+
                 /*
                  * Make sure that we don't merge instances of classes. You _could_ trick this system by specifying an object
                  * with the parameter constructor {name: 'Object'} or specifying a class named Object (don't)
@@ -68,9 +73,16 @@ function famousMerge(defaultParam, specifiedParam) {
     return undefined;
 }
 
+/**
+ *
+ * @param defaultOptions
+ * @param options
+ * @returns {*}
+ */
 export function combineOptions(defaultOptions, options) {
     /* Add an extra level of depth on the object to make sure we are getting the full object to our specialized
      *  function.
      */
+
     return _.mergeWith({root: defaultOptions}, {root: options}, famousMerge).root;
 }
