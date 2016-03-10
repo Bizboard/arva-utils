@@ -20,6 +20,7 @@
     },
     "dependencies": {
       "bowser": "npm:bowser@^1.0.0",
+      "calmelcase": "npm:camelcase@^2.1.0",
       "di": "github:bizboard/di.js@master",
       "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "lodash": "npm:lodash@^4.2.0",

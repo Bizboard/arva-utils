@@ -1,8 +1,8 @@
 System.config({
-  baseURL: "./",
-  defaultJSExtensions: true,
-  transpiler: "babel",
-  babelOptions: {
+  "baseURL": "./",
+  "defaultJSExtensions": true,
+  "transpiler": "babel",
+  "babelOptions": {
     "stage": 0,
     "optional": [
       "runtime",
@@ -11,15 +11,18 @@ System.config({
       "optimisation.modules.system"
     ]
   },
-  paths: {
+  "paths": {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
-  },
+  }
+});
 
-  map: {
+System.config({
+  "map": {
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "bowser": "npm:bowser@1.0.0",
+    "calmelcase": "npm:camelcase@2.1.0",
     "core-js": "npm:core-js@1.2.6",
     "di": "github:bizboard/di.js@master",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -67,3 +70,4 @@ System.config({
     }
   }
 });
+
